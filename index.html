@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+  
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+<div class="wrap">
+    <div class="iiko__wrap">
+  
+
+
+
+  
+     <table id="infoTable">
+        <thead>
+            <tr>
+              <th>Номер замовлення</th>
+              <th>Ім'я замовника 😊</th>
+              <th>Адреса 🏠</th>
+              <th>Номер телефону 📞</th>
+              <th>Загальна вартість 💰</th>
+              <th>Тип оплати 💳</th>
+              <th>Загальна сума оплати 💵</th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <td id="numberOutput"></td>
+              <td id="nameOutput"></td>
+              <td id="address"></td>
+              <td id="phoneOutput"></td>
+              <td id="sumOutput"></td>
+              <td id="paymentTypeOutput"></td>
+              <td id="paymentsSumOutput"></td>
+            </tr>
+          </thead>
+        <thead>
+            <tr>
+              <th>Тип замовлення 🚚</th>
+              <th>Купон 🎫</th>
+              <th>Застосовані умови 🔄</th>
+              <th>Тривалість доставки ⏳</th>
+              <th>Дата створення 📅</th>
+              <th>Статус створення ⚙️</th>
+              <th>Версія додатку</th>
+            </tr>
+          </thead>
+
+        <tbody>
+          <tr>
+            <td id="orderTypeOutput"></td>
+            <td id="couponOutput"></td>
+            <td id="appliedManualConditionsOutput"></td>
+            <td id="deliveryDurationOutput"></td>
+            <td id="whenCreatedOutput"></td>
+            <td id="creationStatusOutput"></td>
+            <td id="appVersionOutput"></td>
+          </tr>
+        </tbody>
+
+      
+      </table>
+
+<table>
+    <thead>
+        <tr>
+            <th>Коментар 📝</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="commentOutput"></td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="container__table_products"></div>
+<div id="container__table_discounts"></div>
+
+    </div>
+
+    <div class="web__wrap"></div>
+
+    <div class="app__wrap"></div>
+<div class="wrap__texArea">
+
+  <textarea class="iiko__text" name="" id="" cols="30" rows="10" placeholder="Вставте логи JSON формату" ></textarea>
+  <button class="btn__converter btn">Конвертувати</button>
+  <button class="btn__show btn">Додати новий запит</button>
+</div>
+
+</div>
+
+ 
+
+   
+</body>
+<script src="script.js"></script> 
+</html>
