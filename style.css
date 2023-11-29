@@ -1,65 +1,65 @@
 .wrap{
-    display: flex;
+  display: flex;
+}
+
+#container__table_products, #container__table_discounts, #container__promocode_name{
+  width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%; /* або будь-яка інша ширина за бажанням */
+    margin: auto; /* центруємо таблицю в блоці */
+  }
+
+  .wrap__texArea{
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  }
+.iiko__text{
+  width: 100%;
+} 
+
+.btn__show{
+  display: none;
+}
+
+.btn{
+  margin-bottom: 30px;
+margin-top: 30px;
+padding: 10px;
+background-color: orangered;
+border: none;
+border-radius: 25px;
+color: white;
+}
+  th, td {
+    border: 1px solid #ddd; /* додаємо бордер для всіх th і td елементів */
+    padding: 8px;
+    text-align: left; /* вирівнюємо текст по лівому краю */
   }
   
-  #container__table_products, #container__table_discounts{
-    width: 100%;
+  th {
+    background-color: #f2f2f2; /* колір фону для заголовків */
+    font-size: 14px;
   }
   
-  table {
-      border-collapse: collapse;
-      width: 100%; /* або будь-яка інша ширина за бажанням */
-      margin: auto; /* центруємо таблицю в блоці */
-    }
-  
-    .wrap__texArea{
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    }
-  .iiko__text{
-    width: 100%;
-  } 
-  
-  .btn__show{
-    display: none;
-  }
-  
-  .btn{
-    margin-bottom: 30px;
-  margin-top: 30px;
-  padding: 10px;
-  background-color: orangered;
-  border: none;
-  border-radius: 25px;
+.iiko__wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.modifier-row{
+  background-color: blueviolet;
   color: white;
-  }
-    th, td {
-      border: 1px solid #ddd; /* додаємо бордер для всіх th і td елементів */
-      padding: 8px;
-      text-align: left; /* вирівнюємо текст по лівому краю */
-    }
-    
-    th {
-      background-color: #f2f2f2; /* колір фону для заголовків */
-      font-size: 14px;
-    }
-    
-  .iiko__wrap{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  .modifier-row{
-    background-color: blueviolet;
-    color: white;
-    padding: 0px;
-  
-  }
-  
-  .modifier-row td{
-    padding-left: 50px;
-  }
+  padding: 0px;
+
+}
+
+.modifier-row td{
+  padding-left: 50px;
+}

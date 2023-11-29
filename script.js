@@ -1,6 +1,8 @@
-let newObjIKKOText = {};
+
+let newObjIKKOText = {}
 const productsArray = [];
 const discountsArray = [];
+const promocodeArray = [];
 
 const iikoText = document.querySelector(".iiko__text");
 const btnConverter = document.querySelector(".btn__converter");
@@ -55,6 +57,13 @@ function transferJsonIIKO() {
   let whenCreated =
     parsedObj.order.whenCreated || parsedObj.order.completeBefore;
   let creationStatus = parsedObj.creationStatus || parsedObj.order.status;
+  let promocodeEvents = parsedObj.order.promocodeEvents || null;
+
+  promocodeEvents?.forEach((item) => {
+    const promocode = `${item.date} / ${item.eventName} / ${item.promocodeName}`;
+
+    promocodeArray.push(promocode);
+  });
 
   parsedObj.order.discounts?.forEach((item) => {
     const discountsName = `${item.discountType.name} / ${item.sum}`;
@@ -69,7 +78,6 @@ function transferJsonIIKO() {
     // Додаємо modifiers, якщо вони є
     if (item.modifiers && item.modifiers.length > 0) {
       const modifiersInfo = item.modifiers.map((modifier) => {
-        console.log(modifier);
         return `${modifier.product?.name || modifier.name} ${
           modifier.amount
         } шт. ${modifier.price} грн /`;
@@ -77,11 +85,8 @@ function transferJsonIIKO() {
       productName += ` / ${modifiersInfo.join(", ")}`;
     }
 
-    console.log(productName);
     productsArray.push(productName);
   });
-
-  console.log(productsArray);
 
   newObjIKKOText = {
     phone,
@@ -101,7 +106,7 @@ function transferJsonIIKO() {
     creationStatus,
     appVersion,
   };
-  console.log(newObjIKKOText.appVersion);
+
   const numberElement = document.querySelector("#numberOutput");
   const phoneNumberElement = document.querySelector("#phoneOutput");
   const nameElement = document.querySelector("#nameOutput");
@@ -147,6 +152,7 @@ function transferJsonIIKO() {
   createTableProducts();
 
   parsedObj.order.payments !== null ? createTableDiscount() : null;
+  parsedObj.order.promocodeEvents !== null ? createTablePromocode() : null;
 
   // btnConverter.style.display = 'none'
   // iikoText.style.display = 'none'
@@ -176,6 +182,7 @@ function createTableProducts() {
   });
 
   thead.appendChild(headerRow);
+  
   table.appendChild(thead);
 
   // Створюємо тіло таблиці
@@ -283,6 +290,68 @@ function createTableDiscount() {
   // Додаємо таблицю до контейнера
   tableContainer.appendChild(table);
 }
+
+function createTablePromocode() {
+  // Отримуємо батьківський елемент, до якого додаємо таблицю
+  const tableContainer = document.getElementById("container__promocode_name");
+  tableContainer.innerHTML = "";
+  // Створюємо елемент таблиці
+  const table = document.createElement("table");
+
+  // Створюємо заголовок таблиці
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+
+  // Масив із назвами колонок
+  const columns = ["Дата", "Причина", "id промокоду"];
+
+  // Додаємо заголовки до заголовка таблиці
+  columns.forEach((column) => {
+    const th = document.createElement("th");
+    th.textContent = column;
+    headerRow.appendChild(th);
+  });
+
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  // Створюємо тіло таблиці
+  const tbody = document.createElement("tbody");
+
+  // Додаємо дані до тіла таблиці
+  promocodeArray.forEach((product) => {
+    // Розділяємо рядок на окремі дані
+  
+    const [eventName, promocodeName,date] = product.split(" / ");
+  
+    // Створюємо новий рядок таблиці
+    const row = document.createElement("tr");
+
+    // Додаємо клітинки до рядка
+    const name = document.createElement("td");
+    name.textContent = eventName.trim(); // обрізаємо пробіли
+
+    const promocodeId = document.createElement("td");
+    promocodeId.textContent = promocodeName.trim();
+
+    const dateCell = document.createElement("td");
+    dateCell.textContent = date.trim();
+
+    // Додаємо клітинки до рядка
+    row.appendChild(name);
+    row.appendChild(promocodeId);
+    row.appendChild(dateCell);
+
+    // Додаємо рядок до тіла таблиці
+    tbody.appendChild(row);
+  });
+
+  table.appendChild(tbody);
+
+  // Додаємо таблицю до контейнера
+  tableContainer.appendChild(table);
+}
+
 btnConverter.addEventListener("click", transferJsonIIKO);
 
 // function showTexArea(){
